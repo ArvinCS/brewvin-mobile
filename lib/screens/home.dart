@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../models/shop_item.dart';
+import '../widgets/left_drawer.dart';
+import 'add_item_page.dart';
+import 'list_item_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,6 +27,7 @@ class _HomePageState extends State<HomePage> {
           'Shopping List',
         ),
       ),
+      drawer: const LeftDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -71,10 +75,24 @@ class ShopCard extends StatelessWidget {
       color: Colors.yellow.shade700,
       child: InkWell(
         onTap: () {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!")));
+          if (item.name == "Tambah Item") {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ShopFormPage(),
+                ));
+          } else if (item.name == "Lihat Item") {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ListItemPage(),
+                ));
+          } else {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(SnackBar(
+                  content: Text("Kamu telah menekan tombol ${item.name}!")));
+          }
         },
         child: Container(
           padding: const EdgeInsets.all(8),
