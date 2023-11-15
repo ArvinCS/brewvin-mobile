@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ShopItem {
+class ItemPanel {
   final String name;
   final IconData icon;
 
-  ShopItem(this.name, this.icon);
+  ItemPanel(this.name, this.icon);
 }

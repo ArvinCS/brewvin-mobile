@@ -5,14 +5,14 @@ import '../cubit/list_item_cubit.dart';
 import '../models/coffee_bean.dart';
 import '../widgets/left_drawer.dart';
 
-class ShopFormPage extends StatefulWidget {
-  const ShopFormPage({super.key});
+class ItemFormPage extends StatefulWidget {
+  const ItemFormPage({super.key});
 
   @override
-  State<ShopFormPage> createState() => _ShopFormPageState();
+  State<ItemFormPage> createState() => _ItemFormPageState();
 }
 
-class _ShopFormPageState extends State<ShopFormPage> {
+class _ItemFormPageState extends State<ItemFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
   String _description = "";

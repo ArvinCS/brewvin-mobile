@@ -13,10 +13,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<ShopItem> items = [
-    ShopItem("Lihat Item", Icons.checklist),
-    ShopItem("Tambah Item", Icons.add_shopping_cart),
-    ShopItem("Logout", Icons.logout),
+  final List<ItemPanel> items = [
+    ItemPanel("Lihat Item", Icons.checklist),
+    ItemPanel("Tambah Item", Icons.add_shopping_cart),
+    ItemPanel("Logout", Icons.logout),
   ];
 
   @override
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisSpacing: 10,
                 crossAxisCount: 3,
                 shrinkWrap: true,
-                children: items.map((ShopItem item) {
+                children: items.map((ItemPanel item) {
                   return ShopCard(item);
                 }).toList(),
               ),
@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 class ShopCard extends StatelessWidget {
-  final ShopItem item;
+  final ItemPanel item;
 
   const ShopCard(this.item, {super.key});
 
@@ -79,7 +79,7 @@ class ShopCard extends StatelessWidget {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ShopFormPage(),
+                  builder: (context) => const ItemFormPage(),
                 ));
           } else if (item.name == "Lihat Item") {
             Navigator.pushReplacement(
