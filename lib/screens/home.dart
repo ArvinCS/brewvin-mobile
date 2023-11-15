@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/shop_item.dart';
+import '../models/panel_item.dart';
 import '../widgets/left_drawer.dart';
 import 'add_item_page.dart';
 import 'list_item_page.dart';
