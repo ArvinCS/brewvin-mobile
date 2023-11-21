@@ -289,3 +289,45 @@
   4. Membuat cubit berupa state management untuk handle list item page, terletak di `cubit/list_item_cubit`. Kemudian, menambahkan provider ke root main.
 
   5. Membuat page untuk memunculkan list item memanfaatkan cubit yang telah dibuat, terletak di `screens/list_item_page`.
+
+### Tugas 9
+
+- ##### Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+  Bisa saja, namun data json yang kita terima akan berupa `map<String, dynamic>`. Sehingga, kita perlu akses data dengan cara map seperti biasa. Jika ingin data yang diterima lebih terstruktur dan dokumentasi yang lebih baik, membuat model terlebih dahulu kemudian diparse saat mengambil data JSON. Namun, perlu diupdate setiap ada perubahan field atau struktur data lainnya.
+
+- ##### Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+
+  CookieRequest berfungsi semacam middleware untuk memberikan headers cookie sebelum kita mengirim request ke server django. Sehingga, request yang diberikan mempunyai kredensial user. CookieRequest perlu dibagikan ke semua komponen agar dapat diakses dalam komponen tersebut.
+
+- ##### Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+
+  1. Buat UI yang akan ditampilkan terlebih dahulu.
+  2. Lakukan pemanggilan data dari endpoint JSON tersebut. Maka, yang diterima berupa data dengan type `Map<String, dynamic>`.
+  3. Konversi map tersebut menjadi sebuah objek dari model yang telah kita buat khusus untuk item tersebut.
+  4. Update state untuk UI tersebut sehingga dapat ditampilkan datanya.
+
+- ##### Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+  1. Buat Form autentikasi pada Flutter terlebih dahulu.
+  2. Lakukan POST Request ke endpoint, dengan data berupa form autentikasi yang dikonversi menjadi JSON.
+  3. Cek response yang didapatkan, jika status code 200, maka berhasil.
+  4. Simpan cookie tersebut.
+  5. Setiap melakukan request, bawa cookie tersebut ke dalam headers requestnya.
+  6. Maka, data yang ditampilkan akan berdasarkan kredensial user tersebut.
+
+- ##### Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+
+  - Elevated button, widget tombol yang dapat dikustomisasi beserta event handlernya.
+  - RichText, widget text yang dapat dinest dengan widget text lainnya.
+  - TextField, widget untuk menerima input text user.
+  - ListView, widget untuk membuat list dari widget.
+  - InkWell, widget untuk memberikan efek sentuhan dan dapat dikustomisasi event handlernya.
+
+- ##### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+
+  1. Setup server django agar dapat menerima request dari mobile app yang dibuat.
+  2. Setup flutter project ini agar bisa mengirim request dengan `CookieRequest`.
+  3. Membuat tampilan untuk login, register, detail item.
+  4. Integrasi tampilan yang telah dibuat dengan backend dari server django dengan membuat function yang mengirim request ke server.
+  5. Tambahkan validasi input seperti input kosong, tidak sama, dan lain-lain.

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
-import '../cubit/list_item_cubit.dart';
-import '../models/coffee_bean.dart';
 import '../widgets/left_drawer.dart';
 
 class ItemFormPage extends StatefulWidget {
@@ -178,11 +177,16 @@ class _ItemFormPageState extends State<ItemFormPage> {
                             );
                           },
                         );
-                        context.read<ListItemCubit>().addItem(CoffeeBean(
-                            name: _name,
-                            description: _description,
-                            taste: _taste,
-                            amount: _amount));
+
+                        context
+                            .read<CookieRequest>()
+                            .post('http://10.0.2.2:8000/create-ajax/', {
+                          'name': _name,
+                          'description': _description,
+                          'taste': _taste,
+                          'amount': _amount.toString(),
+                        });
+
                         _formKey.currentState!.reset();
                       }
                     },

@@ -1,8 +1,7 @@
+import 'package:brewvin_mobile/screens/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'cubit/list_item_cubit.dart';
-import 'screens/home.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,17 +12,20 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiProvider(
       providers: [
-        BlocProvider<ListItemCubit>(
-          create: (BuildContext context) => ListItemCubit(),
-        ),
+        Provider(
+          create: (_) {
+            CookieRequest request = CookieRequest();
+            return request;
+          },
+        )
       ],
       child: MaterialApp(
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
         ),
-        home: const HomePage(),
+        home: const LoginPage(),
       ),
     );
   }
