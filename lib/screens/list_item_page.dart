@@ -16,7 +16,8 @@ class ListItemPage extends StatefulWidget {
 class _ListItemPageState extends State<ListItemPage> {
   Future<List<CoffeeBean>> fetchAllItems(CookieRequest request) async {
     List<CoffeeBean> items = [];
-    final response = await request.get('http://10.0.2.2:8000/json/');
+    final response =
+        await request.get('https://arvin-tugas.pbp.cs.ui.ac.id/json/');
     debugPrint(response.toString());
     response.forEach((element) {
       debugPrint(element.toString());

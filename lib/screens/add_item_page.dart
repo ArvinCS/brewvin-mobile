@@ -178,14 +178,14 @@ class _ItemFormPageState extends State<ItemFormPage> {
                           },
                         );
 
-                        context
-                            .read<CookieRequest>()
-                            .post('http://10.0.2.2:8000/create-ajax/', {
-                          'name': _name,
-                          'description': _description,
-                          'taste': _taste,
-                          'amount': _amount.toString(),
-                        });
+                        context.read<CookieRequest>().post(
+                            'https://arvin-tugas.pbp.cs.ui.ac.id/create-ajax/',
+                            {
+                              'name': _name,
+                              'description': _description,
+                              'taste': _taste,
+                              'amount': _amount.toString(),
+                            });
 
                         _formKey.currentState!.reset();
                       }
